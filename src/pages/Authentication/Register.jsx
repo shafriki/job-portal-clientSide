@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import registerLottie from '../../assets/Animation - 1733955248277.json';
 import Lottie from 'lottie-react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthCntext from '../../Provider/AuthContext';
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthCntext);
+
+
     const handleRegister = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -39,7 +44,13 @@ const Register = () => {
             return;
         }
 
-        console.log(password, email);
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
     };
 
     return (
