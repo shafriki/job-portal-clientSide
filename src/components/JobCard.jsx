@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JobCard = ({ job }) => {
     const {
@@ -10,6 +11,7 @@ const JobCard = ({ job }) => {
         location,
         salaryRange,
         timePosted,
+        _id
     } = job;
 
     // Destructure salaryRange object (min, max, currency)
@@ -83,9 +85,11 @@ const JobCard = ({ job }) => {
                 <p className="text-blue-600 font-bold text-lg">
                     {min && max ? `${currency} ${min} - ${currency} ${max}/Hour` : 'Salary Info Unavailable'}
                 </p>
+                <Link to={`/jobs/${_id}`}>
                 <button className="bg-blue-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-blue-700">
                     Apply Now
                 </button>
+                </Link>
             </div>
         </div>
     );
