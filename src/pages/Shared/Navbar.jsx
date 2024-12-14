@@ -7,6 +7,7 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to='/home'>Home</NavLink>
+        <NavLink to='/myApplications'>My Applications</NavLink>
     </>
 
     const handleSignOut = () => {
