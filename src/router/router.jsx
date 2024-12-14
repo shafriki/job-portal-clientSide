@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
 import Login from "../pages/Authentication/Login.jsx";
 import Register from "../pages/Authentication/Register.jsx";
+import Home from "../pages/Home/Home.jsx";
 
 
 
@@ -13,6 +14,10 @@ import Register from "../pages/Authentication/Register.jsx";
       element: <MainLayout></MainLayout>,
       errorElement: <h1 className="text-6xl font-bold text-center mt-60">Error page.</h1>,
       children: [
+        {
+          path:'/home',
+          element: <Home></Home>
+        },
         {
           path:'/login',
           element: <Login></Login>

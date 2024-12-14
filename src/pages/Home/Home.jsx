@@ -1,9 +1,10 @@
 import React from 'react';
+import HotJobs from '../../components/HotJobs';
 
 const Home = () => {
     return (
         <div>
-            Home Page
+            <HotJobs></HotJobs>
         </div>
     );
 };
