@@ -7,6 +7,7 @@ import Register from "../pages/Authentication/Register.jsx";
 import Home from "../pages/Home/Home.jsx";
 import JobDetails from "../pages/JobDetail/JobDetails.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import JobApply from "../jobApply/JobApply.jsx";
 
 
 
@@ -24,6 +25,11 @@ import PrivateRoute from "./PrivateRoute.jsx";
           path: '/jobs/:id',
           element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+        },
+        {
+          path: '/jobApply/:id',
+          element: <PrivateRoute><JobApply></JobApply></PrivateRoute>,
+          
         },
         {
           path:'/login',
