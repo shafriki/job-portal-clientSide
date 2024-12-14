@@ -1,28 +1,67 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
+import useAuth from '../auth/useAuth';
+import Swal from 'sweetalert2';
 
 const JobApply = () => {
-    const {id} = useParams();
+    const { id } = useParams();
+    const { user } = useAuth();
 
-
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const linkedin =form.linkedin.value;
+        const linkedin = form.linkedin.value;
         const github = form.github.value;
-        const cv = form.cv.vlaue;
+        const cv = form.cv.value;
 
-        console.log(name, linkedin, github, cv);
-    }
-   
+        const jobApplication = {
+            job_id: id,
+            applicant_email: user.email,
+            linkedin,
+            github,
+            cv,
+            name,
+        };
+
+        fetch('http://localhost:3000/job-applications', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jobApplication),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your application has been submitted successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                    });
+                }
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something went wrong. Please try again later.',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
+            });
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-            <form onSubmit={handleSubmit}
+            <form
+                onSubmit={handleSubmit}
                 className="bg-white shadow-md rounded-lg p-8 w-full max-w-md"
             >
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Job Application</h2>
+                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+                    Job Application
+                </h2>
 
                 <div className="mb-4">
                     <label
