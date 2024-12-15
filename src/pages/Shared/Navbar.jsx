@@ -8,6 +8,7 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/home'>Home</NavLink>
         <NavLink to='/myApplications'>My Applications</NavLink>
+        <NavLink to='/addJob'>Add Job</NavLink>
     </>
 
     const handleSignOut = () => {
@@ -39,14 +40,14 @@ const Navbar = () => {
                 </div>
                 <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    className="menu gap-10 menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                     {links}
                 </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu gap-10 menu-horizontal px-1">
                 {links}
                 </ul>
             </div>

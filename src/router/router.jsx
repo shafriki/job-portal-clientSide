@@ -9,6 +9,7 @@ import JobDetails from "../pages/JobDetail/JobDetails.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import JobApply from "../jobApply/JobApply.jsx";
 import MyApplications from "../myApplications/MyApplications.jsx";
+import AddJob from "../AddJob/AddJob.jsx";
 
 
 
@@ -31,6 +32,10 @@ import MyApplications from "../myApplications/MyApplications.jsx";
           path: '/jobApply/:id',
           element: <PrivateRoute><JobApply></JobApply></PrivateRoute>,
 
+        },
+        {
+          path: '/addJob',
+          element: <PrivateRoute><AddJob></AddJob></PrivateRoute>,
         },
         {
           path: '/myApplications',
